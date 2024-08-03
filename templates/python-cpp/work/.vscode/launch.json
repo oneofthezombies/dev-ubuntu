@@ -2,10 +2,20 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch C++ Debug",
+      "name": "Launch C++ Debug (lldb)",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/sample",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "Build C++ Debug"
+    },
+    {
+      "name": "Launch C++ Debug (gdb)",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/build/sample",
+      "args": [],
       "cwd": "${workspaceFolder}",
       "preLaunchTask": "Build C++ Debug"
     }

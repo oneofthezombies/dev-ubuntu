@@ -2,7 +2,8 @@ FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND="noninteractive"
 
-RUN apt update && apt install -y --no-install-recommends \
+RUN apt update && \
+    apt install -y --no-install-recommends \
     build-essential \
     git \
     git-lfs \
@@ -14,6 +15,9 @@ RUN apt update && apt install -y --no-install-recommends \
     unzip \
     openssh-server \
     gdb \
+    lsb-release \
+    software-properties-common \
+    gnupg \
     && apt clean all
 
 # cmake
@@ -30,6 +34,21 @@ RUN mkdir /var/run/sshd && \
     sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
     sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 EXPOSE 22
+
+# clang
+RUN wget --no-check-certificate https://apt.llvm.org/llvm.sh && \
+    chmod +x llvm.sh && \
+    ./llvm.sh 18 && \
+    rm llvm.sh && \
+    update-alternatives --install /usr/bin/clang clang /usr/bin/clang-18 100 && \
+    update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-18 100
+
+# C++ after install clang
+RUN apt -y update && \
+    apt install -y --no-install-recommends \
+    libc++-18-dev \
+    libc++abi-18-dev \
+    && apt clean all
 
 COPY work /root/work
 WORKDIR /root/work
