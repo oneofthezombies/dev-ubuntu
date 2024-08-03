@@ -1,8 +1,8 @@
 services:
-  python-cpp:
+  work:
     image: python-cpp
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8022:22"
+      - "${SSH_PORT:-22}:22"
