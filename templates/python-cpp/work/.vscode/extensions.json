@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "ms-python.python",
+    "ms-python.debugpy",
+    "ms-vscode.cpptools",
+    "llvm-vs-code-extensions.vscode-clangd",
+    "esbenp.prettier-vscode",
+    "ms-vscode.cmake-tools"
+  ]
+}

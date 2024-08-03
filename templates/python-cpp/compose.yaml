@@ -1,0 +1,8 @@
+services:
+  python-cpp:
+    image: python-cpp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8022:22"

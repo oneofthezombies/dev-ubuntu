@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch C++ Debug",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/sample",
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "Build C++ Debug"
+    }
+  ]
+}
